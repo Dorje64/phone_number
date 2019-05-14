@@ -40,14 +40,13 @@ def does_end_with?(word)
 end
 
 def map_number_to_word(number)
-  number_to_letter = {2=> %w(a b c), 3=> %w(d e f), 4=> %w(g h i), 5=> %w(j k l), 6=> %w(m n o), 7=> %w(p q r s), 8=> %w(t u v), 9=> %w(w x y z)}
   words = []
   number.each do |num|
     if words.empty?
-      words = number_to_letter[num]
+      words = $number_to_letter[num]
     else
       current_loop_words = []
-      combinations = words.product(number_to_letter[num])
+      combinations = words.product($number_to_letter[num])
       combinations.each do |comb|
         word = comb.join
         if does_start_with?(word)
@@ -60,15 +59,14 @@ def map_number_to_word(number)
 end
 
 def reverse_map(number)
-  number_to_letter = {2=> %w(a b c), 3=> %w(d e f), 4=> %w(g h i), 5=> %w(j k l), 6=> %w(m n o), 7=> %w(p q r s), 8=> %w(t u v), 9=> %w(w x y z)}
   words = []
   number.each do |num|
     # binding.pry
     if words.empty?
-      words = number_to_letter[num]
+      words = $number_to_letter[num]
     else
       current_loop_words = []
-      combinations = words.product(number_to_letter[num])
+      combinations = words.product($number_to_letter[num])
       combinations.each do |comb|
         word = comb.join
         if does_end_with?(word)
